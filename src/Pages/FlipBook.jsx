@@ -3,7 +3,7 @@ import HTMLFlipBook from 'react-pageflip';
 import './styles.css';
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
-import pdf from './Catalogue.pdf';
+import pdf from './catalogue-01.pdf';
 import Loading from './Loading';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
@@ -36,16 +36,31 @@ function FlipBook() {
   return (
     <>
       {loading && <Loading loading={loading} />}
-      <div className=" h-screen flex flex-col justify-center items-center scroll-mx-2 overflow-hidden">
-        <h1 className="text-3xl sm:text-5xl font-semibold py-2 sm:py-12 text-gray-600">
-          Remote Digital Catalogue
-        </h1>
+      <div
+        className=" h-screen flex flex-col justify-start items-center scroll-mx-2 overflow-hidden"
+        style={{
+          backgroundImage:
+            "url('https://mr-green-usa.s3.us-east-1.amazonaws.com/caglar-oskay-jjb8hu_6kme-unsplash05-03-2024:17:05:52.jpg')",
+          objectPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className=" py-9 sm:py-20 text-center space-y-2">
+          <h1 className="text-3xl sm:text-5xl font-semibold text-amber-500">
+            Remote Digital Catalogue
+          </h1>
+          <p className="text-lg sm:text-2xl font-semibold text-gray-50">
+            Swipe / Click on the corners to flip the pages
+          </p>
+        </div>
+
         <HTMLFlipBook
           showCover={true}
           drawShadow={true}
-          flippingTime={600}
           showPageCorners
           maxShadowOpacity={0.2}
+          swipeDistance={100}
           height={600}
           width={400}
           maxHeight={900}
